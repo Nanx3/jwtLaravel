@@ -60,6 +60,9 @@
             }
         },
         mounted() {
+            axios.defaults.headers.common = {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            };
             axios.get('/api/products').then((response) => {
                this.products = response.data.products
             });

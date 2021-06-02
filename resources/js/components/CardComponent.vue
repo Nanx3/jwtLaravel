@@ -31,6 +31,9 @@ export default {
     },
     methods: {
         deleteProduct(){
+            axios.defaults.headers.common = {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            };
             axios.delete('/api/products/' + this.product.id ).then(() => {
                 this.$emit('delete');
             });    
